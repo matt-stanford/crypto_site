@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container"><br>
+    {% if crypto.Response %}
+        <div class="alert alert-danger" role="alert">
+        The symbol {{ quote }} doesn't exist! Please try again...
+        </div>
+    {% endif %}
+
+    {% for key, value in crypto.DISPLAY.items %}
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">{{ key }}</h1>
+                <strong>Price: </strong>{{ value.GBP.PRICE }}<br/>
+                <strong>24hr High: </strong>{{ value.GBP.HIGHDAY }}<br/>
+                <strong>24hr Low: </strong>{{ value.GBP.LOWDAY }}<br/>
+                <strong>Market Cap: </strong>{{ value.GBP.MKTCAP }}<br/>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+</div>
+
+{% endblock %}
